@@ -1,3 +1,21 @@
 .navBar {
-    padding-top: 10px;
+    display: flex;
+    height: 40px;
+    width: 100%;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.navBarTitle {
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.addFileBtn {
+    white-space: nowrap;
+    height: 40px;
+}
+
+.paper-button {
+    text-transform: none !important;
 }
