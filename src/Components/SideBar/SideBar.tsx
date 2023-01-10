@@ -3,7 +3,7 @@ import { Box, Drawer, Avatar, List, Divider, ListItem, ListItemButton, ListItemI
 import { MoveToInbox, Mail } from '@mui/icons-material';
 import { deepPurple } from '@mui/material/colors';
 
-export default function SideBar() {
+ const SideBar = () => {
     const drawerWidth = 240;
     return (
         <Box sx={{ display: 'flex' }}>
@@ -68,3 +68,5 @@ export default function SideBar() {
         </Box>
     );
 }
+
+export default SideBar;
