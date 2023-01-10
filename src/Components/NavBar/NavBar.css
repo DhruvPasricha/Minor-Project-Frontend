@@ -9,6 +9,7 @@
 .navBarTitle {
     font-weight: 500;
     font-size: 24px;
+    margin: auto 0px;
 }
 
 .addFileBtn {
