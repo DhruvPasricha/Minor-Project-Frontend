@@ -2,8 +2,9 @@ import React from 'react';
 import { Box, Drawer, Avatar, List, Divider, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import { MoveToInbox, Mail } from '@mui/icons-material';
 import { deepPurple } from '@mui/material/colors';
+import './SideBar.css';
 
-export default function SideBar() {
+const SideBar = () => {
     const drawerWidth = 240;
     return (
         <Box sx={{ display: 'flex' }}>
@@ -67,4 +68,6 @@ export default function SideBar() {
             </Drawer>
         </Box>
     );
-}
+};
+
+export default SideBar;
