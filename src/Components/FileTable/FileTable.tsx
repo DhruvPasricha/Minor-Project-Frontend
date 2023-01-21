@@ -20,7 +20,7 @@ interface Column {
 }
 
 const columns: readonly Column[] = [
-  { id: 'file_details', label: 'File Details', minWidth: 300 },
+  { id: 'file_details', label: 'File Details', minWidth: 40 },
   { id: 'created_by', label: 'Created By', minWidth: 40 },
   {
     id: 'received_on',

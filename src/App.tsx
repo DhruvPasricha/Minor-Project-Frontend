@@ -1,10 +1,7 @@
 import React from 'react'
 import SideBar from '../src/Components/SideBar/SideBar'
 import NavBar from './Components/NavBar/NavBar'
-import FileHistory from './Components/FileTable/FileHistory'
 import './App.css'
-import FileTable from './Components/FileTable/FileTable'
-import ProfileCard from './Components/ProfileCard/ProfileCard'
 import { Routes, Route } from 'react-router-dom'
 import MyFiles from './Pages/MyFiles'
 import IncomingFiles from './Pages/IncomingFiles'
@@ -13,6 +10,9 @@ import SentFiles from './Pages/SentFiles'
 import TrackFiles from './Pages/TrackFiles'
 import NotFound from './Pages/NotFound'
 import Settings from './Pages/Settings'
+import LoginPage from './Pages/LoginPage/LoginPage'
+import ProfilePage from './Components/ProfileCard/ProfileCard'
+import FileHistory from './Components/FileTable/FileHistory'
 
 const App = () => {
   return (
@@ -27,13 +27,12 @@ const App = () => {
           <Route path='/received-files' element={<ReceivedFiles />} />
           <Route path='/sent-files' element={<SentFiles />} />
           <Route path='/track-files' element={<TrackFiles />} />
+          <Route path='/profile' element={<FileHistory />} />
           <Route path='/settings' element={<Settings />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </div>
-      {/* <FileTable /> */}
-      {/* <FileHistory /> */}
-      {/* <ProfileCard /> */}
+      {/* <LoginPage /> */}
     </div>
   )
 }

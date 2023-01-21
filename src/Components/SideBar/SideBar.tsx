@@ -29,9 +29,9 @@ const SideBar = () => {
   const drawerWidth = 240
 
   const endPoints = [
-    { name: 'My Files', endPoint: '/my-files', icon: <FileCopy /> },
+    { name: 'Created', endPoint: '/my-files', icon: <FileCopy /> },
     {
-      name: 'Incoming Files',
+      name: 'Incoming',
       endPoint: '/incoming-files',
       icon: <MoveToInbox />,
     },
