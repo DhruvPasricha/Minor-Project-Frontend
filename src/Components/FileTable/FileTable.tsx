@@ -9,7 +9,6 @@ import {
   TablePagination,
   TableRow,
 } from '@mui/material'
-import TableTile from './TableTile'
 import TableTileSwal from './TableTileSwal'
 
 interface Column {
