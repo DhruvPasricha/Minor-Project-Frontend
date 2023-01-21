@@ -1,7 +1,9 @@
 import React from 'react'
 import {
+  Avatar,
   Button,
   Card,
+  CardHeader,
   CardActions,
   CardContent,
   Typography,
@@ -30,20 +32,35 @@ const FileHistory = () => {
     <div
       style={{
         display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
+        alignItems: 'end',
+        justifyContent: 'end',
         width: '100%',
         height: '100vh',
       }}
     >
       <Card
-        elevation={3}
+        elevation={2}
         sx={{
-          minWidth: 600,
+          minWidth: '80vw',
+          minHeight: '80vh',
           padding: '20px 30px 40px 30px',
           borderRadius: '20px',
         }}
       >
+        <CardHeader
+          avatar={
+            <Avatar
+              sx={{ height: '140px', width: '140px' }}
+              aria-label='profile'
+            >
+              P
+            </Avatar>
+          }
+          titleTypographyProps={{ variant: 'h3' }}
+          title='Dhruv Pasricha'
+          subheaderTypographyProps={{ fontSize: '16px' }}
+          subheader='164752'
+        />
         <CardContent>
           <Typography fontWeight='bold' variant='h5' component='div'>
             {fileData.fileNumber}
@@ -68,12 +85,6 @@ const FileHistory = () => {
           </Typography>
         </CardContent>
         <br />
-        <CardActions>
-          <Button size='small'>Cancel</Button>
-          <Button variant='contained' size='small'>
-            Mark as received / Assign file
-          </Button>
-        </CardActions>
       </Card>
     </div>
   )
