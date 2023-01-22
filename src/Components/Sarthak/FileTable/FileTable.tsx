@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from '@mui/material';
 import TableTileSwal from './TableTileSwal';
-import { Column } from '../DataTable/DataTable';
+import { Column } from '../../DataTable/DataTable';
 
 const columns: readonly Column[] = [
     { id: 'fileDetails', label: 'File Details' },

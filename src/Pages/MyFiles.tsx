@@ -1,5 +1,5 @@
 import React from 'react'
-import FileTable from '../Components/FileTable/FileTable'
+import FileTable from '../Components/Sarthak/FileTable/FileTable'
 
 const MyFiles = () => {
   return (

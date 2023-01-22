@@ -45,8 +45,8 @@ export default function DataTable(props: DataTableProps) {
                     <TableBody>
                         {rowWiseData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((curRowData: any) => {
                             return (
-                                <TableRow hover role="checkbox" tabIndex={-1}>
-                                    {columns.map((column, index) => {
+                                <TableRow hover role="checkbox" tabIndex={-1} onClick={curRowData?.onClick}>
+                                    {columns.map((column) => {
                                         const curValue = curRowData[column.id] || null;
                                         return (
                                             <TableCell key={column.id} align={column.align}>
