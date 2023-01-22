@@ -1,18 +1,19 @@
 import Swal from 'sweetalert2';
+import { File } from '../../App';
 
-export function ReceiveFileSwal(data: any) {
+export function ReceiveFileSwal(data: File) {
     Swal.fire({
-        title: data.id,
+        title: data.fileId,
         html: `<div >
         <span style="font-weight:bold;">File Subject: </span>
-        ${data.subject}
+        ${data.fileSubject}
         <br/>
         <br/>
         <span style="font-weight:bold;">Created By: </span>
-        ${data.createdby}
+        ${data.createdBy}
         <br/>
         <span style="font-weight:bold;">Currently With: </span>
-        ${data.assignedby}
+        ${data.assignedBy}
         <br/>
         </div> `,
         icon: 'info',
@@ -23,6 +24,7 @@ export function ReceiveFileSwal(data: any) {
         cancelButtonText: 'CANCEL',
     }).then((result) => {
         if (result.isConfirmed) {
+            // todo: make a post api to mark as received
             Swal.fire('Received!', 'File has been marked as received.', 'success');
         }
     });

@@ -12,9 +12,11 @@ const FileStatus = (props: FileStatusPropsType) => {
 
 const FILE_STATUS = {
     IN_PROCESS: <FileStatus statusText="In Process" statusColor="#FEC400" />,
+    RECEIVED: <FileStatus statusText="In Process" statusColor="#FEC400" />,
+    CREATED: <FileStatus statusText="Created" statusColor="Blue" />,
     CLOSED: <FileStatus statusText="Closed" statusColor="#29CC97" />,
+    DISPATCHED: <FileStatus statusText="Dispatched" statusColor="Grey" />,
 };
-
 
 interface FileStatusPropsType {
     statusText: string;
