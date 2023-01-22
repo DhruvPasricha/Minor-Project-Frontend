@@ -13,7 +13,6 @@ import SentFiles from './Pages/SentFiles'
 import TrackFiles from './Pages/TrackFiles'
 import NotFound from './Pages/NotFound'
 import Settings from './Pages/Logout'
-
 import Logout from './Pages/Logout'
 
 const App = () => {
