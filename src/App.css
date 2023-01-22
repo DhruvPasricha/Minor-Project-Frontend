@@ -11,6 +11,9 @@ code {
 
 #app {
     display: flex;
+}
+
+.no-scroll {
     height: 100vh;
     overflow: hidden;
 }

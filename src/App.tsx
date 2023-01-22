@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import SideBar from '../src/Components/SideBar/SideBar'
 import NavBar from './Components/NavBar/NavBar'
 import FileHistory from './Components/Sarthak/FileTable/FileHistory'
@@ -16,8 +16,20 @@ import Settings from './Pages/Logout'
 import Logout from './Pages/Logout'
 
 const App = () => {
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!ref.current) return
+
+    if (window.location.pathname === '/track-files') {
+      ref.current.classList.remove('.no-scroll')
+    } else {
+      ref.current.classList.add('.no-scroll')
+    }
+  }, [window.location.pathname])
+
   return (
-    <div id='app'>
+    <div id='app' ref={ref}>
       <SideBar />
       <div>
         <NavBar />
