@@ -25,7 +25,7 @@ const TrackFiles = () => {
 
     const steps = getSteps();
 
-    return (
+    return steps?.length ? (
         <Box sx={{ padding: '20px 60px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Typography variant="h3">{data.subject}</Typography> {FILE_STATUS.IN_PROCESS}
@@ -43,6 +43,8 @@ const TrackFiles = () => {
                 ))}
             </Stepper>
         </Box>
+    ) : (
+        <></>
     );
 };
 
