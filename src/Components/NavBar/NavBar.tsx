@@ -1,11 +1,14 @@
 import AddIcon from '@mui/icons-material/Add'
 import { Button } from '@mui/material'
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { CreateFileSwal } from '../FileSwals/CreateFileSwal'
 import SearchBox from '../SearchBox/SearchBox'
 import './NavBar.css'
 import AccountMenu from './ProfileIcon/ProfileIcon'
 
 const NavBar = () => {
+  const navigate = useNavigate()
   const [searchValue, setSearchValue] = useState('')
   return (
     <div className='navBar'>
@@ -18,7 +21,12 @@ const NavBar = () => {
           style={{ width: 'unset' }}
         />
         <div>
-          <Button className='addFileBtn' variant='outlined' color='primary'>
+          <Button
+            className='addFileBtn'
+            variant='outlined'
+            color='primary'
+            onClick={() => CreateFileSwal(navigate)}
+          >
             <span style={{ display: 'flex', justifyContent: 'space-between' }}>
               <AddIcon color='primary' fontSize='small' />
               <span>Add File</span>

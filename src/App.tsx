@@ -12,7 +12,9 @@ import ReceivedFiles from './Pages/ReceivedFiles'
 import SentFiles from './Pages/SentFiles'
 import TrackFiles from './Pages/TrackFiles'
 import NotFound from './Pages/NotFound'
-import Settings from './Pages/Settings'
+import Settings from './Pages/Logout'
+import LoginPage from './Pages/LoginPage/LoginPage'
+import Logout from './Pages/Logout'
 
 const App = () => {
   return (
@@ -27,10 +29,11 @@ const App = () => {
           <Route path='/received-files' element={<ReceivedFiles />} />
           <Route path='/sent-files' element={<SentFiles />} />
           <Route path='/track-files' element={<TrackFiles />} />
-          <Route path='/settings' element={<Settings />} />
+          <Route path='/logout' element={<Logout />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </div>
+      {/* <LoginPage /> */}
       {/* <FileTable /> */}
       {/* <FileHistory /> */}
       {/* <ProfileCard /> */}
