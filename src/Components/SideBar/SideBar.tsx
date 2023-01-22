@@ -144,13 +144,13 @@ const SideBar = () => {
           <ListItem disablePadding>
             <ListItemButton
               onClick={() => {
-                navigate('settings')
+                navigate('logout')
               }}
             >
               <ListItemIcon>
                 <Settings />
               </ListItemIcon>
-              <ListItemText primary={'Settings'} />
+              <ListItemText primary={'Logout'} />
             </ListItemButton>
           </ListItem>
         </List>
