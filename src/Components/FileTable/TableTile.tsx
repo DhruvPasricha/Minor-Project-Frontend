@@ -15,7 +15,7 @@ export default function TableTile(rowData: any) {
                 <ListItemButton onClick={handleOpen}>
                     <ListItem alignItems="flex-start">
                         <ListItemAvatar>
-                            <Avatar alt="Remy Sharp" src="" />
+                            <Avatar src="" />
                         </ListItemAvatar>
                         <ListItemText
                             sx={{ width: '200px' }}

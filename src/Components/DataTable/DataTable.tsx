@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { createTheme, Paper, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Theme, ThemeProvider } from '@mui/material';
+import './DataTable.css';
 
 export default function DataTable(props: DataTableProps) {
     const theme = createTheme({
@@ -8,14 +9,7 @@ export default function DataTable(props: DataTableProps) {
                 styleOverrides: {
                     root: {
                         maxHeight: '81vh',
-                        width: '81vw !important',
-                    },
-                },
-            },
-            MuiTableCell: {
-                styleOverrides: {
-                    root: {
-                        textAlign: 'center',
+                        width: '80.8vw !important',
                     },
                 },
             },
