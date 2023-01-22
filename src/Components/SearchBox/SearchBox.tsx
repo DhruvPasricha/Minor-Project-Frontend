@@ -1,8 +1,10 @@
 import React from 'react';
 import { Box, FormControl, InputAdornment, OutlinedInput } from '@mui/material';
 import { SearchOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 
 const SearchBox = (props: SearchBoxPropsType) => {
+    const navigate = useNavigate();
     const { searchValue, setSearchValue, placeholder = '', style } = props;
     return (
         <Box sx={{ width: '100%', ml: { xs: 0, md: 1 } }} style={style}>
@@ -23,6 +25,12 @@ const SearchBox = (props: SearchBoxPropsType) => {
                     value={searchValue}
                     onChange={(event) => {
                         setSearchValue(event.target.value);
+                    }}
+                    onKeyDown={(event) => {
+                        if (event.key === 'Enter') {
+                            // on success
+                            navigate('/track-files');
+                        }
                     }}
                 />
             </FormControl>
