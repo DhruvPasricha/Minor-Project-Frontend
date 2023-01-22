@@ -4,3 +4,11 @@ th > strong {
     font-size: 13px !important;
     padding-left: 16px !important;
 }
+
+tr:hover {
+    cursor: pointer;
+}
+
+tr > th:hover {
+    cursor: initial;
+}
