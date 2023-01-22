@@ -4,12 +4,9 @@ import { createTheme, Paper, Stack, Table, TableBody, TableCell, TableContainer,
 export default function DataTable(props: DataTableProps) {
     const theme = createTheme({
         components: {
-            // Name of the component
             MuiPaper: {
                 styleOverrides: {
-                    // Name of the slot
                     root: {
-                        // Some CSS
                         maxHeight: '81vh',
                         width: '81vw !important',
                     },
@@ -59,7 +56,7 @@ export default function DataTable(props: DataTableProps) {
                                         const curValue = curRowData[column.id] || null;
                                         return (
                                             <TableCell key={column.id} align={column.align}>
-                                                {`${curValue}-${index}`}
+                                                {curValue}
                                             </TableCell>
                                         );
                                     })}

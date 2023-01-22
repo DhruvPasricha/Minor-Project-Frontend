@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from '@mui/material';
 import DataTable, { Column } from '../../Components/DataTable/DataTable';
+import FILE_STATUS from '../../Components/FileStatus/FileStatus';
 
 const columns: Column[] = [
     { id: 'fileDetails', label: 'File Details' },
@@ -154,8 +155,8 @@ interface Data {
 
 const data = [
     {
-        fileDetails: 'FileDetails',
-        createdDetails: 'createdDetails',
+        fileDetails: FILE_STATUS.CLOSED,
+        createdDetails: FILE_STATUS.IN_PROCESS,
         receivedDetails: 'receivedDetails',
         status: 'status',
     },
