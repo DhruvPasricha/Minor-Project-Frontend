@@ -2,7 +2,7 @@ import * as React from 'react'
 import DataTable, { Column } from '../../Components/DataTable/DataTable'
 import FILE_STATUS from '../../Components/FileStatus/FileStatus'
 import TableCell from '../../Components/DataTable/TableCell/TabelCell'
-import { ReceiveFileSwal } from '../../Components/FileSwals/FileSwals'
+import { ReceiveFileSwal } from '../../Components/FileSwals/ReceiveFileSwal'
 
 const columns: Column[] = [
   { id: 'fileDetails', label: 'File Details' },
