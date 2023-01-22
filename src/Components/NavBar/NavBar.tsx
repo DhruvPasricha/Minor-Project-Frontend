@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CreateFileSwal } from '../FileSwals/CreateFileSwal'
 import SearchBox from '../SearchBox/SearchBox'
+import { UrltoTabName } from './constants'
 import './NavBar.css'
 import AccountMenu from './ProfileIcon/ProfileIcon'
 
@@ -12,7 +13,7 @@ const NavBar = () => {
   const [searchValue, setSearchValue] = useState('')
   return (
     <div className='navBar'>
-      <div className='navBarTitle'>My Files</div>
+      <div className='navBarTitle'>{UrltoTabName[window.location.pathname]}</div>
       <div style={{ display: 'flex', gap: '10px' }}>
         <SearchBox
           searchValue={searchValue}
