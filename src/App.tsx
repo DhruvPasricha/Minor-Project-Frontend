@@ -16,11 +16,12 @@ import './App.css';
 export const UserContext = createContext<UserContextType>({});
 
 const App = () => {
-    const [userState, userDispatch] = useState<UserStateType>({});
+    const [userState, userDispatch] = useState<UserStateType>({ userId: 1 });
+    const { userId } = userState; 
     useEffect(() => {
         const getUserFilesInfo = async () => {
             try {
-                const response = await API.GET('/files/user/1');
+                const response = await API.GET(`/files/user/${userId}`);
                 userDispatch({ ...userState, filesData: response.data.data });
             } catch (e) {}
         };
@@ -59,6 +60,7 @@ const App = () => {
 export interface UserStateType {
     filesData?: any;
     trackFileData?: TrackFileDataResponse;
+    userId: 1;
 }
 export interface UserContextType {
     userState?: UserStateType;
@@ -69,9 +71,13 @@ export interface File {
     fileSubject: string;
     fileId: string | number;
     createdBy: string | number;
+    createdByUserId: string | number;
     createdAt: string;
     assignedBy: string | number;
+    assignedByUserId: string | number;
     assignedAt: string;
+    assignedForUserId: string | number;
+    assignedFor: string;
     status: 'CLOSED' | 'DISPATCHED' | 'RECEIVED' | 'CREATED';
 }
 

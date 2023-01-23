@@ -1,7 +1,8 @@
+import axios from 'axios';
 import Swal from 'sweetalert2';
-import { File } from '../../App';
+import { File, UserStateType } from '../../App';
 
-export function ReceiveFileSwal(data: File) {
+export function ReceiveFileSwal(data: File, userState: UserStateType | undefined) {
     Swal.fire({
         title: data.fileId,
         html: `<div >
@@ -24,8 +25,17 @@ export function ReceiveFileSwal(data: File) {
         cancelButtonText: 'CANCEL',
     }).then((result) => {
         if (result.isConfirmed) {
-            // todo: make a post api to mark as received
-            Swal.fire('Received!', 'File has been marked as received.', 'success');
+            axios
+                .post('files/receive', {
+                    fileId: data.fileId,
+                    sender: data.assignedByUserId,
+                    receiver: userState?.userId,
+                })
+                .then(() => {
+                    Swal.fire('Received!', 'File has been marked as received.', 'success').then(() => {
+                        window.location.pathname = '/received-files';
+                    });
+                });
         }
     });
 }
