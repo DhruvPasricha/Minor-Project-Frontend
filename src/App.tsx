@@ -27,7 +27,6 @@ const App = () => {
         getUserFilesInfo();
     }, []);
     const isLoginPage = window.location.pathname === '/login';
-    console.log('app', userState);
     return (
         <UserContext.Provider value={{ userState, userDispatch }}>
             <div
