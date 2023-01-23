@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Drawer, Avatar, List, Divider, ListItem, ListItemButton, ListItemIcon, ListItemText, ButtonBase } from '@mui/material';
-import { MoveToInbox, Mail, FileCopy, ContentCopy, DriveFolderUpload, Search, Settings } from '@mui/icons-material';
+import { MoveToInbox, FileCopy, ContentCopy, DriveFolderUpload, Search, Logout } from '@mui/icons-material';
 import { deepPurple } from '@mui/material/colors';
 import './SideBar.css';
 import { useNavigate } from 'react-router-dom';
@@ -51,7 +51,7 @@ const SideBar = () => {
                 >
                     <Box display="flex" justifyContent="center" alignItems="center" sx={{ pt: 2, pb: 2 }}>
                         <div style={{ paddingTop: '5px', paddingRight: '10px' }}>
-                            <Mail />
+                            <img src="https://i.ibb.co/r6KGGB9/logo.png" alt="logo" height="36px" />
                         </div>
 
                         <div
@@ -116,11 +116,11 @@ const SideBar = () => {
                     <ListItem disablePadding>
                         <ListItemButton
                             onClick={() => {
-                                navigate('logout');
+                                window.location.pathname = '/login';
                             }}
                         >
                             <ListItemIcon>
-                                <Settings />
+                                <Logout />
                             </ListItemIcon>
                             <ListItemText primary={'Logout'} />
                         </ListItemButton>
