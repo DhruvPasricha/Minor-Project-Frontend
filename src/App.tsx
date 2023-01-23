@@ -20,7 +20,7 @@ const App = () => {
     useEffect(() => {
         const getUserFilesInfo = async () => {
             try {
-                const response = await API.GET('/files/user/2');
+                const response = await API.GET('/files/user/1');
                 userDispatch({ ...userState, filesData: response.data.data });
             } catch (e) {}
         };

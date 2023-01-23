@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Swal, { SweetAlertResult } from 'sweetalert2';
 import { File } from '../../App';
 
@@ -32,9 +33,12 @@ export function AssignFileSwal(data: File) {
         cancelButtonText: 'CANCEL',
     }).then((result: SweetAlertResult<string>) => {
         if (result && result.isConfirmed && result.value) {
-            // todo: make a post request to assign file
-            const assignedToPerson = faculty[result.value];
-            Swal.fire('Assigned!', `File has been assigned to ${assignedToPerson}`, 'success');
+            axios
+                .post('/files/assign', { sender: '1', receiver: '2', fileId: '15' })
+                .then(() => {
+                    Swal.fire('Assigned!', `File has been assigned`, 'success');
+                })
+                .catch(() => {});
         }
     });
 }
