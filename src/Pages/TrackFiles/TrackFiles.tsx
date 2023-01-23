@@ -14,7 +14,17 @@ const getFileStepLabel = (data: FileAction) => {
         CLOSED: `Closed by ${actionDoneBy}`,
     };
 
-    return <StepLabel optional={<Typography variant="caption">on {getDate(actionDoneAt)} at {getTime(actionDoneAt)}</Typography>}>{message[action]}</StepLabel>;
+    return (
+        <StepLabel
+            optional={
+                <Typography variant="caption">
+                    on {getDate(actionDoneAt)} at {getTime(actionDoneAt)}
+                </Typography>
+            }
+        >
+            {message[action]}
+        </StepLabel>
+    );
 };
 
 const TrackFiles = () => {
@@ -26,7 +36,7 @@ const TrackFiles = () => {
     const steps = trackFileData?.actions || [];
     return steps?.length ? (
         <Box sx={{ padding: '20px 60px 0 60px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', textTransform: 'uppercase' }}>
                 <Typography variant="h3">{trackFileData?.fileSubject}</Typography> {FILE_STATUS[trackFileData.status]}
             </div>
 

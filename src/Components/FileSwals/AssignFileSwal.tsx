@@ -2,7 +2,7 @@ import axios from 'axios';
 import Swal, { SweetAlertResult } from 'sweetalert2';
 import { File, UserStateType } from '../../App';
 
-export function AssignFileSwal(data: File, faculty: { [key: string]: string }, userState: UserStateType | undefined) {
+export function AssignFileSwal(data: File, possibleUsers: { [key: string]: string }, userState: UserStateType | undefined) {
     Swal.fire({
         title: data.fileId,
         html: `<div >
@@ -13,7 +13,7 @@ export function AssignFileSwal(data: File, faculty: { [key: string]: string }, u
         <span style="font-weight:bold;">Assign to: </span>
         </div> `,
         input: 'select',
-        inputOptions: faculty,
+        inputOptions: possibleUsers,
         inputPlaceholder: 'Select faculty',
         icon: 'info',
         showCancelButton: true,
@@ -26,7 +26,9 @@ export function AssignFileSwal(data: File, faculty: { [key: string]: string }, u
             axios
                 .post('/files/assign', { sender: userState?.userId, receiver: result.value, fileId: data.fileId })
                 .then(() => {
-                    Swal.fire('Assigned!', `File has been assigned`, 'success');
+                    if (result.value) Swal.fire('Assigned!', `File has been assigned to ${possibleUsers[result.value]}`, 'success').then(() => {
+                        window.location.pathname = '/sent-files';
+                    });
                 })
                 .catch(() => {});
         }
