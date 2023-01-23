@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Stepper, Step, StepLabel, Typography } from '@mui/material'
-import FILE_STATUS from '../Components/FileStatus/FileStatus'
+import FILE_STATUS from '../../Components/FileStatus/FileStatus'
 
 const getFileStepLabel = (data: FileAction) => {
   const { action, actionDoneBy, actionDoneFor, actionDoneAt } = data
