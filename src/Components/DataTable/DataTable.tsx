@@ -29,6 +29,8 @@ export default function DataTable(props: DataTableProps) {
         setPage(0);
     };
 
+    const isDataPresent = rowWiseData && rowWiseData.length > 0;
+
     return (
         <ThemeProvider theme={theme}>
             <TableContainer component={Paper}>
@@ -42,8 +44,7 @@ export default function DataTable(props: DataTableProps) {
                             ))}
                         </TableRow>
                     </TableHead>
-
-                    {rowWiseData && (
+                    {isDataPresent && (
                         <TableBody>
                             {rowWiseData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((curRowData: any) => {
                                 return (
@@ -63,15 +64,21 @@ export default function DataTable(props: DataTableProps) {
                     )}
                 </Table>
             </TableContainer>
-            {!rowWiseData && (
-                <Box>
-                    <Typography variant="h6">No files to show</Typography>
-                </Box>
-            )}
-            {rowWiseData && (
+            {isDataPresent ? (
                 <Stack alignItems="center" justifyContent="end">
                     <TablePagination rowsPerPageOptions={[10, 25, 100]} component="div" count={rowWiseData ? rowWiseData.length : 0} rowsPerPage={rowsPerPage} page={page} onPageChange={handleChangePage} onRowsPerPageChange={handleChangeRowsPerPage} />
                 </Stack>
+            ) : (
+                <Box
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                    }}
+                >
+                    <Typography mt={4} variant="h6">
+                        <b>No files to show</b>
+                    </Typography>
+                </Box>
             )}
         </ThemeProvider>
     );

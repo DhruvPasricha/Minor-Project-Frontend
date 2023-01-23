@@ -4,6 +4,7 @@ import FILE_STATUS from '../../Components/FileStatus/FileStatus';
 import TableCell from '../../Components/DataTable/TableCell/TabelCell';
 import { AssignFileSwal } from '../../Components/FileSwals/AssignFileSwal';
 import { UserContext, File } from '../../App';
+import { getDate } from '../../Util/Common/Common';
 
 export default function FilesWithMe() {
   const userContext = useContext(UserContext);
@@ -11,8 +12,8 @@ export default function FilesWithMe() {
     const tableData = myFiles?.map((file: File) => {
         return {
           fileDetails: <TableCell topText={<strong>{file.fileSubject}</strong>} bottomText={file.fileId} showAvatar={true} />,
-          createdDetails: <TableCell topText={<strong>{file.createdBy}</strong>} bottomText={file.createdAt} />,
-          receivedDetails: <TableCell topText={<strong>{file.assignedBy}</strong>} bottomText={file.assignedAt} />,
+          createdDetails: <TableCell topText={<strong>{file.createdBy}</strong>} bottomText={getDate(file.createdAt)} />,
+          receivedDetails: <TableCell topText={<strong>{file.assignedBy}</strong>} bottomText={getDate(file.assignedAt)} />,
           status: FILE_STATUS[file.status],
           onClick: () => AssignFileSwal(file),
         };
@@ -27,5 +28,5 @@ export default function FilesWithMe() {
         format: (value: number) => value.toLocaleString('en-US'),
     },
 ];
-    return tableData && <DataTable columns={columns} rowWiseData={tableData}></DataTable>;
+    return <DataTable columns={columns} rowWiseData={tableData}></DataTable>;
 }

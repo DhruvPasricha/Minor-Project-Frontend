@@ -3,6 +3,7 @@ import DataTable, { Column } from '../../Components/DataTable/DataTable';
 import FILE_STATUS from '../../Components/FileStatus/FileStatus';
 import TableCell from '../../Components/DataTable/TableCell/TabelCell';
 import { UserContext, File } from '../../App';
+import { getDate } from '../../Util/Common/Common';
 
 export default function SentFiles() {
     const userContext = useContext(UserContext);
@@ -10,7 +11,7 @@ export default function SentFiles() {
     const tableData = myFiles?.map((file: File) => {
         return {
             fileDetails: <TableCell topText={<strong>{file.fileSubject}</strong>} bottomText={file.fileId} showAvatar={true} />,
-            createdDetails: <TableCell topText={<strong>{file.createdBy}</strong>} bottomText={file.createdAt} />,
+            createdDetails: <TableCell topText={<strong>{file.createdBy}</strong>} bottomText={getDate(file.createdAt)} />,
             status: FILE_STATUS[file.status],
         };
     });
@@ -19,5 +20,5 @@ export default function SentFiles() {
         { id: 'createdDetails', label: 'Created By' },
         { id: 'status', label: 'Status' },
     ];
-    return tableData && <DataTable columns={columns} rowWiseData={tableData}></DataTable>;
+    return <DataTable columns={columns} rowWiseData={tableData}></DataTable>;
 }
