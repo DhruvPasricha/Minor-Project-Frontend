@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createTheme, Paper, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Theme, ThemeProvider } from '@mui/material';
+import { createTheme, Paper, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Box, ThemeProvider, Typography } from '@mui/material';
 import './DataTable.css';
 
 export default function DataTable(props: DataTableProps) {
@@ -42,27 +42,37 @@ export default function DataTable(props: DataTableProps) {
                             ))}
                         </TableRow>
                     </TableHead>
-                    <TableBody>
-                        {rowWiseData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((curRowData: any) => {
-                            return (
-                                <TableRow hover role="checkbox" tabIndex={-1} onClick={curRowData?.onClick}>
-                                    {columns.map((column) => {
-                                        const curValue = curRowData[column.id] || null;
-                                        return (
-                                            <TableCell key={column.id} align={column.align}>
-                                                {curValue}
-                                            </TableCell>
-                                        );
-                                    })}
-                                </TableRow>
-                            );
-                        })}
-                    </TableBody>
+
+                    {rowWiseData && (
+                        <TableBody>
+                            {rowWiseData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((curRowData: any) => {
+                                return (
+                                    <TableRow hover role="checkbox" tabIndex={-1} onClick={curRowData?.onClick}>
+                                        {columns.map((column) => {
+                                            const curValue = curRowData[column.id] || null;
+                                            return (
+                                                <TableCell key={column.id} align={column.align}>
+                                                    {curValue}
+                                                </TableCell>
+                                            );
+                                        })}
+                                    </TableRow>
+                                );
+                            })}
+                        </TableBody>
+                    )}
                 </Table>
             </TableContainer>
-            <Stack alignItems="center">
-                <TablePagination rowsPerPageOptions={[10, 25, 100]} component="div" count={rowWiseData.length} rowsPerPage={rowsPerPage} page={page} onPageChange={handleChangePage} onRowsPerPageChange={handleChangeRowsPerPage} />
-            </Stack>
+            {!rowWiseData && (
+                <Box>
+                    <Typography variant="h6">No files to show</Typography>
+                </Box>
+            )}
+            {rowWiseData && (
+                <Stack alignItems="center" justifyContent="end">
+                    <TablePagination rowsPerPageOptions={[10, 25, 100]} component="div" count={rowWiseData ? rowWiseData.length : 0} rowsPerPage={rowsPerPage} page={page} onPageChange={handleChangePage} onRowsPerPageChange={handleChangeRowsPerPage} />
+                </Stack>
+            )}
         </ThemeProvider>
     );
 }

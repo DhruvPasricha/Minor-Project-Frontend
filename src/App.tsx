@@ -70,9 +70,9 @@ export interface File {
     fileSubject: string;
     fileId: string | number;
     createdBy: string | number;
-    createdAt: string | number;
+    createdAt: string;
     assignedBy: string | number;
-    assignedAt: string | number;
+    assignedAt: string;
     status: 'CLOSED' | 'DISPATCHED' | 'RECEIVED' | 'CREATED';
 }
 
