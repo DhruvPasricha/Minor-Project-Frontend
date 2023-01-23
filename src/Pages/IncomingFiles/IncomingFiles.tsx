@@ -7,7 +7,7 @@ import { UserContext, File } from '../../App';
 
 export default function IncomingFiles() {
     const userContext = useContext(UserContext);
-    const incomingFiles = userContext?.filesData?.incoming;
+    const incomingFiles = userContext?.userState?.filesData?.incoming;
     const tableData = incomingFiles?.map((file: File) => {
         return {
             fileDetails: <TableCell topText={<strong>{file.fileSubject}</strong>} bottomText={file.fileId} showAvatar={true} />,

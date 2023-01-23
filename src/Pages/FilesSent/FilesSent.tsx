@@ -6,7 +6,7 @@ import { UserContext, File } from '../../App';
 
 export default function SentFiles() {
     const userContext = useContext(UserContext);
-    const myFiles = userContext?.filesData?.sent;
+    const myFiles = userContext?.userState?.filesData?.sent;
     const tableData = myFiles?.map((file: File) => {
         return {
             fileDetails: <TableCell topText={<strong>{file.fileSubject}</strong>} bottomText={file.fileId} showAvatar={true} />,
