@@ -6,6 +6,11 @@ import { AssignFileSwal } from '../../Components/FileSwals/AssignFileSwal';
 import { UserContext, File } from '../../App';
 import { getDate } from '../../Util/Common/Common';
 
+const faculty: { [key: string]: string } = {
+  1: 'Dhruv Pasricha',
+  2: 'Pulkit Asri',
+};
+
 export default function FilesWithMe() {
   const userContext = useContext(UserContext);
     const myFiles = userContext?.userState?.filesData?.currentlyHolding;
@@ -15,7 +20,7 @@ export default function FilesWithMe() {
           createdDetails: <TableCell topText={<strong>{file.createdBy}</strong>} bottomText={getDate(file.createdAt)} />,
           receivedDetails: <TableCell topText={<strong>{file.assignedBy}</strong>} bottomText={getDate(file.assignedAt)} />,
           status: FILE_STATUS[file.status],
-          onClick: () => AssignFileSwal(file),
+          onClick: () => AssignFileSwal(file, faculty, userContext.userState),
         };
     });
   const columns: Column[] = [
