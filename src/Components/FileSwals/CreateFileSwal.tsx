@@ -31,7 +31,7 @@ export function CreateFileSwal(navigate: any) {
     }).then((result) => {
         if (result && result.isConfirmed && result.value) {
             axios
-                .post('/files/create', { createdBy: '1' })
+                .post('/files/create', { createdBy: '1', subject: result.value.subject })
                 .then(() => {
                     Swal.fire('Created!', `File has been created sucessfully`, 'success').then(() => {
                         window.location.href = '/received-files';

@@ -4,6 +4,7 @@ import FILE_STATUS from '../../Components/FileStatus/FileStatus';
 import TableCell from '../../Components/DataTable/TableCell/TabelCell';
 import { UserContext, File } from '../../App';
 import { getDate, getTime } from '../../Util/Common/Common';
+import { closeFileSwal } from '../../Components/FileSwals/CloseFileSwal';
 
 export default function MyFiles() {
     const userContext = useContext(UserContext);
@@ -13,6 +14,7 @@ export default function MyFiles() {
             fileDetails: <TableCell topText={<strong>{file.fileSubject}</strong>} bottomText={file.fileId} showAvatar={true} />,
             createdDetails: <TableCell topText={<strong>{getDate(file.createdAt)}</strong>} bottomText={getTime(file.createdAt)} />,
             status: FILE_STATUS[file.status],
+            onClick: () => closeFileSwal(file, userContext?.userState),
         };
     });
     const columns: Column[] = [

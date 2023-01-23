@@ -1,18 +1,8 @@
 import axios from 'axios';
 import Swal, { SweetAlertResult } from 'sweetalert2';
-import { File } from '../../App';
+import { File, UserStateType } from '../../App';
 
-const faculty: { [key: string]: string } = {
-    sk: 'Sarthak Khandelwal',
-    dp: 'Dhruv Pasricha',
-    ps: 'Pulkit Asri',
-    rg: 'Rahul Gandhi',
-    sr: 'Shubham Rawal',
-    wj: 'Wamika Jha',
-    tk: 'Tushar Khanduri',
-};
-
-export function AssignFileSwal(data: File) {
+export function AssignFileSwal(data: File, possibleUsers: { [key: string]: string }, userState: UserStateType | undefined) {
     Swal.fire({
         title: data.fileId,
         html: `<div >
@@ -23,7 +13,7 @@ export function AssignFileSwal(data: File) {
         <span style="font-weight:bold;">Assign to: </span>
         </div> `,
         input: 'select',
-        inputOptions: faculty,
+        inputOptions: possibleUsers,
         inputPlaceholder: 'Select faculty',
         icon: 'info',
         showCancelButton: true,
@@ -34,9 +24,11 @@ export function AssignFileSwal(data: File) {
     }).then((result: SweetAlertResult<string>) => {
         if (result && result.isConfirmed && result.value) {
             axios
-                .post('/files/assign', { sender: '1', receiver: '2', fileId: '15' })
+                .post('/files/assign', { sender: userState?.userId, receiver: result.value, fileId: data.fileId })
                 .then(() => {
-                    Swal.fire('Assigned!', `File has been assigned`, 'success');
+                    if (result.value) Swal.fire('Assigned!', `File has been assigned to ${possibleUsers[result.value]}`, 'success').then(() => {
+                        window.location.pathname = '/sent-files';
+                    });
                 })
                 .catch(() => {});
         }

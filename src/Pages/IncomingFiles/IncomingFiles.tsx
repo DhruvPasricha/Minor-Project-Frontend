@@ -15,7 +15,7 @@ export default function IncomingFiles() {
             createdDetails: <TableCell topText={<strong>{file.createdBy}</strong>} bottomText={getDate(file.createdAt)} />,
             receivedDetails: <TableCell topText={<strong>{file.assignedBy}</strong>} bottomText={getDate(file.assignedAt)} />,
             status: FILE_STATUS[file.status],
-            onClick: () => ReceiveFileSwal(file),
+            onClick: () => ReceiveFileSwal(file, userContext?.userState),
         };
     });
     const columns: Column[] = [
