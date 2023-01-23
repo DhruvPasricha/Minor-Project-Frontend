@@ -27,7 +27,7 @@ const TrackFiles = () => {
     return steps?.length ? (
         <Box sx={{ padding: '20px 60px 0 60px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <Typography variant="h3">{trackFileData?.fileSubject}</Typography> {FILE_STATUS[trackFileData.fileStatus]}
+                <Typography variant="h3">{trackFileData?.fileSubject}</Typography> {FILE_STATUS[trackFileData.status]}
             </div>
 
             <Typography sx={{ paddingLeft: '10px', fontWeight: 'bold', marginBottom: '10px' }}>{trackFileData?.fileId}</Typography>
@@ -55,6 +55,6 @@ interface FileAction {
 export interface TrackFileDataResponse {
     fileId: any;
     fileSubject: any;
-    fileStatus: 'CLOSED' | 'DISPATCHED' | 'RECEIVED' | 'CREATED';
+    status: 'CLOSED' | 'DISPATCHED' | 'RECEIVED' | 'CREATED';
     actions: FileAction[];
 }
