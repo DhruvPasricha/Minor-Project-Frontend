@@ -75,7 +75,7 @@ export default function AccountMenu() {
       >
         <MenuItem
           onClick={() => {
-            navigate('/logout')
+            window.location.pathname = '/login'
           }}
         >
           <ListItemIcon>
